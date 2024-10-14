@@ -1,0 +1,10 @@
+---
+import { Picture } from "astro:assets";
+import logo from "@img/logo.png";
+---
+
+<nav>
+	<a href="/" rel="noopener noreferrer">
+		<Picture src={logo} formats={["avif", "webp"]} alt="Car on time" />
+	</a>
+</nav>
