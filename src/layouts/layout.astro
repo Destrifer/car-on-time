@@ -10,8 +10,12 @@ import Header from "@components/header.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
+	<body class="flex flex-col min-h-screen">
 		<Header />
-		<slot />
+		<main class="flex-grow">
+			<slot />
+		</main>
+
+		<footer>Футер</footer>
 	</body>
 </html>
