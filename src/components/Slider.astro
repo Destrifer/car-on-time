@@ -1,0 +1,76 @@
+---
+import { Picture } from "astro:assets";
+import bmw from "@img/bmw.png";
+import camaro from "@img/camaro.png";
+---
+
+<div class="siema-container relative w-full h-[400px] overflow-hidden">
+	<div class="siema w-full h-full">
+		<!-- Первый слайд -->
+		<div class="flex flex-col md:flex-row w-full h-full">
+			<!-- Левая часть с текстом по центру -->
+			<div class="w-full md:w-1/2 flex items-center justify-center">
+				<p class="text-center">
+					АРЕНДА АВТО В КРЫМУ +7 (978) 955-60-60 +7 (978) 955-60-60 Стойка в
+					терминале аэропорт Симферополь
+				</p>
+			</div>
+
+			<!-- Правая часть с изображением -->
+			<div class="w-full md:w-1/2 flex items-center justify-center">
+				<Picture src={bmw} formats={["avif", "webp"]} alt="Car on time" />
+			</div>
+		</div>
+
+		<!-- Второй слайд -->
+		<div class="flex flex-col md:flex-row w-full h-full">
+			<!-- Левая часть с текстом по центру -->
+			<div class="w-full md:w-1/2 flex items-center justify-center">
+				<p class="text-center">
+					АРЕНДА АВТО В КРЫМУ +7 (978) 955-60-60 +7 (978) 955-60-60 Стойка в
+					терминале аэропорт Симферополь
+				</p>
+			</div>
+
+			<!-- Правая часть с изображением -->
+			<div class="w-full md:w-1/2 flex items-center justify-center">
+				<Picture src={camaro} formats={["avif", "webp"]} alt="Car on time" />
+			</div>
+		</div>
+	</div>
+
+	<!-- Кнопки навигации -->
+	<button
+		class="prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-4 py-2"
+		>Previous</button
+	>
+	<button
+		class="next absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-4 py-2"
+		>Next</button
+	>
+</div>
+
+<script>
+	import Siema from "siema";
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const mySiema = new Siema({
+			duration: 1000,
+			easing: "ease-out",
+			perPage: 1,
+			startIndex: 0,
+			draggable: true,
+			multipleDrag: true,
+			threshold: 20,
+			loop: true,
+		});
+
+		// Добавить навигацию
+		document
+			.querySelector(".prev")
+			.addEventListener("click", () => mySiema.prev());
+		document
+			.querySelector(".next")
+			.addEventListener("click", () => mySiema.next());
+	});
+</script>
