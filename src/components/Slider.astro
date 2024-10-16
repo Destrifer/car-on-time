@@ -9,19 +9,27 @@ import camaro from "@img/camaro.png";
 >
 	<div class="siema w-full h-full">
 		<!-- Первый слайд -->
-		<div class="flex flex-col md:flex-row w-full h-full">
+		<div class="flex flex-col md:flex-row w-full h-full first">
 			<!-- Левая часть с текстом по центру -->
 			<div
 				class="w-full md:w-1/2 flex items-center justify-center text-center flex-col gap-y-4"
 			>
-				<p class="text-3xl font-bold">АРЕНДА АВТО В КРЫМУ</p>
-				<p class="text-2xl font-bold text-blue-600">+7 (978) 955-60-60</p>
-				<p class="text-2xl font-bold text-blue-600">+7 (978) 955-60-60</p>
-				<p class="text-2xl">Стойка в терминале аэропорт Симферополь</p>
+				<p class="text-4xl font-bold text-white drop-shadow-md">
+					АРЕНДА АВТО В КРЫМУ
+				</p>
+				<p class="text-3xl font-bold text-red-600 drop-shadow-md">
+					+7 (978) 955-60-60
+				</p>
+				<p class="text-3xl font-bold text-red-600 drop-shadow-md">
+					+7 (978) 955-60-60
+				</p>
+				<p class="text-2xl text-white drop-shadow-md">
+					Стойка в терминале аэропорт Симферополь
+				</p>
 			</div>
 
 			<!-- Правая часть с изображением, ограниченным по высоте -->
-			<div class="w-full md:w-1/2 flex items-center justify-center">
+			<div class="w-full md:w-1/2 flex items-center justify-center z-10">
 				<Picture
 					src={bmw}
 					formats={["avif", "webp"]}
@@ -32,17 +40,25 @@ import camaro from "@img/camaro.png";
 		</div>
 
 		<!-- Второй слайд -->
-		<div class="flex flex-col md:flex-row w-full h-full">
+		<div class="flex flex-col md:flex-row w-full h-full second">
 			<div
 				class="w-full md:w-1/2 flex items-center justify-center text-center flex-col gap-y-4"
 			>
-				<p class="text-3xl font-bold">АРЕНДА АВТО В КРЫМУ</p>
-				<p class="text-2xl font-bold text-red-600">+7 (978) 955-60-60</p>
-				<p class="text-2xl font-bold text-red-600">+7 (978) 955-60-60</p>
-				<p class="text-2xl">Стойка в терминале аэропорт Симферополь</p>
+				<p class="text-4xl font-bold text-white drop-shadow-md">
+					АРЕНДА АВТО В КРЫМУ
+				</p>
+				<p class="text-3xl font-bold text-yellow-400 drop-shadow-md">
+					+7 (978) 955-60-60
+				</p>
+				<p class="text-3xl font-bold text-yellow-400 drop-shadow-md">
+					+7 (978) 955-60-60
+				</p>
+				<p class="text-2xl text-white drop-shadow-md">
+					Стойка в терминале аэропорт Симферополь
+				</p>
 			</div>
 
-			<div class="w-full md:w-1/2 flex items-center justify-center">
+			<div class="w-full md:w-1/2 flex items-center justify-center z-10">
 				<Picture
 					src={camaro}
 					formats={["avif", "webp"]}
@@ -72,7 +88,103 @@ import camaro from "@img/camaro.png";
 		></span>
 	</button>
 </div>
+<style>
+	.first {
+		background: linear-gradient(
+			180deg,
+			#a2dff7 0%,
+			#3f92d9 40%,
+			#0c67b5 70%,
+			#004e8f 100%
+		);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		height: 100%; /* Заменено на 100% для родительского элемента */
+		margin: 0;
+		overflow: hidden;
+		position: relative;
+	}
 
+	.first::before {
+		content: "";
+		position: absolute;
+		width: 200%;
+		height: 60%;
+		background: radial-gradient(
+			circle at 30% 30%,
+			rgba(162, 223, 247, 0.5),
+			transparent 60%
+		);
+		top: -20%;
+		left: -50%;
+		transform: rotate(20deg);
+		z-index: 1;
+	}
+
+	.first::after {
+		content: "";
+		position: absolute;
+		width: 200%;
+		height: 40%;
+		background: radial-gradient(
+			circle at 70% 70%,
+			rgba(63, 146, 217, 0.5),
+			transparent 70%
+		);
+		bottom: -10%;
+		left: -50%;
+		transform: rotate(-20deg);
+		z-index: 1;
+	}
+
+	.second {
+		background: linear-gradient(
+			180deg,
+			#4b0000 0%,
+			#7e0000 40%,
+			#a30000 70%,
+			#d40000 100%
+		);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		height: 100%;
+		margin: 0;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.second::before {
+		content: "";
+		position: absolute;
+		width: 200%;
+		height: 60%;
+		background: radial-gradient(
+			circle at 30% 30%,
+			rgba(144, 0, 0, 0.5),
+			transparent 60%
+		);
+		top: -20%;
+		left: -50%;
+		transform: rotate(20deg);
+		z-index: 1;
+	}
+
+	.second::after {
+		content: "";
+		position: absolute;
+		width: 200%;
+		height: 40%;
+		background: radial-gradient(
+			circle at 70% 70%,
+			rgba(179, 0, 0, 0.5),
+			transparent 70%
+		);
+		bottom: -10%;
+		left: -50%;
+		transform: rotate(-20deg);
+		z-index: 1;
+	}
+</style>
 <script>
 	import Siema from "siema";
 
