@@ -1,0 +1,45 @@
+---
+import CarCard from './CarCard.astro';
+import ky from 'ky';
+
+let cars = null;
+let error = null;
+
+try {
+  // Выполняем запрос к API
+  const response = await ky.get('https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=26.10.2024&from-date=19.10.2024&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=24').json();
+  
+  // Ожидаем массив автомобилей в поле vehicles
+  cars = response?.vehicles || []; 
+} catch (err) {
+  error = err.message;
+}
+---
+
+<div>
+  <h1>Available Cars</h1>
+
+  <!-- Если ошибка -->
+  {error ? (
+    <div>Error: {error}</div>
+  ) : (
+    <!-- Вывод карточек автомобилей -->
+    <div class="cars-grid">
+      {cars.length > 0 ? (
+        cars.map(car => (
+          <CarCard car={car} />
+        ))
+      ) : (
+        <p>No cars available</p>
+      )}
+    </div>
+  )}
+</div>
+
+<style>
+  .cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+// Принимаем свойства автомобиля через пропсы
+const { car } = Astro.props;
+---
+
+<div class="car-card">
+	<img src={car.thumbnail} alt={car.model} />
+	<!-- Используем thumbnail -->
+	<h3>{car.model}</h3>
+	<p>Transmission: {car.transmission}</p>
+	<p>Seats: {car.seats}</p>
+	<p>Engine: {car.engine_capacity} L / {car.engine_hp} HP</p>
+	<p>Deposit: {car.deposit}</p>
+	<p>Rent Period: {car.rent_period_days} days</p>
+	<p>Price: {car.rate_subtotal}</p>
+</div>
+
+<style>
+	.car-card {
+		border: 1px solid #ddd;
+		padding: 16px;
+		border-radius: 8px;
+		margin-bottom: 20px;
+	}
+	.car-card img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		border-radius: 4px;
+	}
+</style>

@@ -13,6 +13,7 @@
     "@astrojs/tailwind": "^5.1.2",
     "astro": "^4.16.3",
     "astro-navbar": "^2.3.3",
+    "ky": "^1.7.2",
     "siema": "^1.5.1",
     "tailwindcss": "^3.4.13"
   }
