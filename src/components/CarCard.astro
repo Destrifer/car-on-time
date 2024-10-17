@@ -11,8 +11,8 @@ const { car } = Astro.props;
 	<p>Deposit: {car.deposit}</p>
 	<p>Rent Period: {car.rent_period_days} days</p>
 	<p>Price: {car.rate_subtotal}</p>
-	<!-- Передаем машину как пропс в другой компонент -->
-	<a href={`/order`} class="order-button">Order Now</a>
+	<!-- Передаем id автомобиля в URL -->
+	<a href={`/order/${car.id}`} class="order-button">Order Now</a>
 </div>
 
 <style>

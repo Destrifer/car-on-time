@@ -1,5 +1,35 @@
 ---
-import Layout from "../layouts/layout.astro";
+const url = new URL(Astro.request.url);
+const carData = url.searchParams.get("car");
+
+console.log("Encoded car data:", carData); // Добавим лог для проверки
+
+let car = null;
+try {
+	car = carData ? JSON.parse(decodeURIComponent(carData)) : null;
+	console.log("Decoded car data:", car); // Выведем декодированные данные
+} catch (err) {
+	console.error("Failed to decode car data:", err);
+}
 ---
 
-<Layout />
+<div class="car-order-page">
+	{
+		car ? (
+			<div>
+				<h1>Order {car.model}</h1>
+				<img src={car.image} alt={car.model} />
+				<p>Transmission: {car.transmission}</p>
+				<p>Seats: {car.seats}</p>
+				<p>
+					Engine: {car.engine_capacity} L / {car.engine_hp} HP
+				</p>
+				<p>Deposit: {car.deposit}</p>
+				<p>Rent Period: {car.rent_period_days} days</p>
+				<p>Price: {car.rate_subtotal}</p>
+			</div>
+		) : (
+			<p>Car details are not available</p>
+		)
+	}
+</div>
