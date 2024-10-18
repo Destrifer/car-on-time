@@ -1,0 +1,85 @@
+---
+import ky from "ky";
+
+// Обычная функция без типизации
+const handleSubmit = async (event) => {
+	event.preventDefault();
+
+	const formData = new FormData(event.target);
+
+	try {
+		// Отправка данных на сервер через ky
+		const response = await ky
+			.post("/api/send-email", {
+				body: formData,
+			})
+			.json();
+
+		alert(response.message); // Сообщение об успешной отправке
+	} catch (error) {
+		console.error("Ошибка отправки:", error);
+		alert("Произошла ошибка при отправке.");
+	}
+};
+---
+
+<div
+	class="relative p-8 bg-cover bg-center before:absolute before:inset-0 before:bg-black before:bg-opacity-70 before:content-['']"
+	style="background-image: url('src/img/feedback.jpg');"
+>
+	<div class="conteiner text-white relative z-10 flex gap-8 flex-col">
+		<div class="text-center">
+			Задайте вопрос онлайн
+			<p class="text-4xl font-black">Обратная связь</p>
+		</div>
+
+		<div class="flex gap-x-8 justify-center flex-wrap">
+			<form
+				onsubmit={handleSubmit}
+				class="w-full sm:w-1/4 flex flex-col sm:flex-row sm:flex-wrap sm:gap-4 gap-4"
+			>
+				<input
+					type="text"
+					name="name"
+					required
+					placeholder="Имя:"
+					class="w-full sm:w-[48%] p-2 border text-black"
+				/>
+				<input
+					type="email"
+					name="email"
+					required
+					placeholder="Email:"
+					class="w-full sm:w-[48%] p-2 border text-black"
+				/>
+				<textarea
+					name="message"
+					required
+					placeholder="Сообщение:"
+					class="w-full p-2 border text-black h-48"></textarea>
+				<button type="submit" class="w-full bg-red-600 p-2">Отправить</button>
+			</form>
+
+			<div class="text-white sm:w-1/4 w-full">
+				Мы работаем для Вас ежедневно c 08:00 до 20:00. Прием и выдача
+				автомобилей в нерабочее время - 1500 руб. Стойка аренды авто в терминале
+				аэропорт Симферополь
+
+				<ul>
+					<li>
+						Наименование юридического лица: ООО «КАНСАЙ-ГРУПП» ИНН: 9102225144
+					</li>
+					<li>
+						Адрес: 297536, Республика Крым, Симферопольский р-н, с.Укромное,
+						Ул.Молодежная, 64-б
+					</li>
+					<li>WhatsApp, Viber, iMessage: +7 (978) 955-60-60</li>
+					<li>Телефон: +7 (978) 955-60-60</li>
+					<li>E-mail: info@car-on-time.ru</li>
+					<li>Время работы: 08:00-20:00 - ежедневно</li>
+					<li>Показать на карте</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
