@@ -11,7 +11,13 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.2",
+    "@iconify-json/fluent": "^1.2.4",
+    "@iconify-json/fluent-color": "^1.2.1",
+    "@iconify-json/line-md": "^1.2.2",
+    "@iconify-json/logos": "^1.2.3",
+    "@iconify-json/openmoji": "^1.2.3",
     "astro": "^4.16.3",
+    "astro-icon": "^1.1.1",
     "astro-navbar": "^2.3.3",
     "emailjs": "^4.0.3",
     "ky": "^1.7.2",
