@@ -1,6 +1,8 @@
 ---
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -9,13 +11,47 @@ import Header from "@components/Header.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{title || "Astro"}</title>
 	</head>
 	<body class="flex flex-col min-h-screen gap-y-4 pb-4">
 		<Header />
-		<main class="flex-grow">
+		<main class="flex-grow relative">
+			<h1
+				class="text-3xl font-bold shadow-up mb-4 py-4 bg-white z-10 relative decorated-title"
+			>
+				{title}
+			</h1>
 			<slot />
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.shadow-up {
+		box-shadow: 0px -4px 10px -2px rgb(0 0 0 / 0.1) inset;
+	}
+	.decorated-title {
+		position: relative;
+		text-align: center; /* Выравнивание по центру */
+	}
+
+	.decorated-title::before,
+	.decorated-title::after {
+		content: "";
+		border-bottom: 1px solid #4bb;
+		border-top: 1px solid #4bb;
+		width: 40px;
+		height: 0.1em;
+		position: absolute;
+		top: 50%;
+	}
+
+	.decorated-title::before {
+		margin-left: -50px;
+	}
+
+	.decorated-title::after {
+		margin-left: 10px;
+	}
+</style>
