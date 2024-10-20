@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/layout.astro";
+import { Icon } from "astro-icon/components";
+const title = "Наши контакты";
+---
+
+<Layout title={title}>
+	<div class="flex justify-between items-center px-40 gap-5">
+		<ul class="self-start">
+			<li class="flex">
+				<div
+					class="w-12 h-12 flex items-center justify-center rounded-full bg-red-900"
+				>
+					<Icon
+						name="openmoji:european-name-badge"
+						class="text-gray-600"
+						size="24"
+					/>
+				</div>
+				<div class="ml-2">
+					<p>Наименование юридического лица:</p> ООО «КАНСАЙ-ГРУПП» ИНН: 9102225144
+				</div>
+			</li>
+			<li class="flex">
+				<div
+					class="w-12 h-12 flex items-center justify-center rounded-full bg-red-900"
+				>
+					<Icon
+						name="openmoji:home-button"
+						class="inline-block mr-1"
+						size="28"
+					/>
+				</div>
+				<div class="ml-2">
+					<p>Адрес:</p> 297536, Республика Крым, Симферопольский р-н, с.Укромное,
+					Ул.Молодежная, 64-б/
+				</div>
+			</li>
+			<li class="flex">
+				<div
+					class="w-12 h-12 flex items-center justify-center rounded-full bg-red-900"
+				>
+					<Icon name="openmoji:mobile-phone" class="inline-block" size="32" />
+				</div><div class="ml-2">
+					<p>Телефон:</p> +7 978 955 60 60 +7 978 913 44 13
+				</div>
+			</li>
+			<li class="flex">
+				<div
+					class="w-12 h-12 flex items-center justify-center rounded-full bg-red-900"
+				>
+					<Icon
+						name="logos:whatsapp-icon"
+						class="inline-block mr-2 mb-1 ml-1"
+						size="20"
+					/>
+				</div><div class="ml-2"><p>Viber:</p> +7 978 955 60 60</div>
+			</li>
+			<li class="flex">
+				<div
+					class="w-12 h-12 flex items-center justify-center rounded-full bg-red-900"
+				>
+					<Icon name="openmoji:e-mail" class="inline-block" size="32" />
+				</div><div class="ml-2"><p>Email:</p> info@car-on-time.ru</div>
+			</li>
+			<li class="flex">
+				<div
+					class="w-12 h-12 flex items-center justify-center rounded-full bg-red-900"
+				>
+					<Icon name="openmoji:timer-clock" class="inline-block" size="32" />
+				</div><div class="ml-2">
+					<p>Режим работы:</p> Мы работаем ежедневно с 08:00 до 20:00
+				</div>
+			</li>
+		</ul>
+
+		<form
+			class="self-start w-50 flex flex-col sm:flex-row sm:flex-wrap sm:gap-4 gap-4"
+		>
+			<input
+				type="text"
+				name="name"
+				required
+				placeholder="Имя:"
+				class="w-full sm:w-[48%] p-2 border text-black"
+			/>
+			<input
+				type="email"
+				name="email"
+				required
+				placeholder="Email:"
+				class="w-full sm:w-[48%] p-2 border text-black"
+			/>
+			<textarea
+				name="message"
+				required
+				placeholder="Сообщение:"
+				class="w-full p-2 border text-black h-48"></textarea>
+			<button type="submit" class="w-full bg-red-600 p-2">Отправить</button>
+		</form>
+	</div>
+</Layout>

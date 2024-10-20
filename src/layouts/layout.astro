@@ -2,7 +2,7 @@
 import Footer from "@components/Footer.astro";
 import Header from "../components/Header.astro";
 
-const { title } = Astro.props;
+const { title, showTitle = true } = Astro.props;
 ---
 
 <html lang="en">
@@ -16,20 +16,26 @@ const { title } = Astro.props;
 	<body class="flex flex-col min-h-screen gap-y-4 pb-4">
 		<Header />
 		<main class="flex-grow relative">
-			<h1
-				class="text-3xl font-bold shadow-up mb-4 py-4 bg-white z-10 relative decorated-title"
-			>
-				{title}
-			</h1>
-			<slot />
+			{
+				showTitle && (
+					<h1 class="text-3xl font-bold shadow-up pt-4 pb-8 z-10 relative decorated-title">
+						{title}
+					</h1>
+				)
+			}
+			<slot class="sm:px-4" />
 		</main>
 		<Footer />
 	</body>
 </html>
 
 <style>
+	body {
+		color: #1f3852;
+	}
 	.shadow-up {
 		box-shadow: 0px -4px 10px -2px rgb(0 0 0 / 0.1) inset;
+		text-shadow: 1px 1px 2px rgb(66, 68, 90);
 	}
 	.decorated-title {
 		position: relative;
@@ -39,12 +45,12 @@ const { title } = Astro.props;
 	.decorated-title::before,
 	.decorated-title::after {
 		content: "";
-		border-bottom: 1px solid #4bb;
-		border-top: 1px solid #4bb;
+		border-bottom: 1px solid #1f3852;
+		border-top: 1px solid #1f3852;
 		width: 40px;
 		height: 0.1em;
 		position: absolute;
-		top: 50%;
+		top: 40%;
 	}
 
 	.decorated-title::before {

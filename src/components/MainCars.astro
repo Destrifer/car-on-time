@@ -2,15 +2,29 @@
 import CarCard from './CarCard.astro';
 import ky from 'ky';
 
+// Функция для получения даты в формате "DD.MM.YYYY"
+const formatDate = (date) => {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+  const year = date.getFullYear();
+  return `${day}.${month}.${year}`;
+};
+
+// Получаем текущую дату + 3 дня для from-date и + 8 дней для to-date
+const fromDate = new Date();
+fromDate.setDate(fromDate.getDate() + 3);
+const toDate = new Date(fromDate);
+toDate.setDate(toDate.getDate() + 5);
+
 let cars = null;
 let error = null;
 
 try {
   // Выполняем запрос к API
-  const response = await ky.get('https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=26.10.2024&from-date=19.10.2024&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8').json();
+  const response = await ky.get(`https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=${formatDate(toDate)}&from-date=${formatDate(fromDate)}&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8`).json();
   
   // Ожидаем массив автомобилей в поле vehicles
-  cars = response?.vehicles || []; 
+  cars = response?.vehicles || [];
 } catch (err) {
   error = err.message;
 }
