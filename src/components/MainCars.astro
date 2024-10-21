@@ -30,7 +30,9 @@ try {
 }
 ---
 <div>
-  <h1>Available Cars</h1>
+	<p class="text-center text-2xl font-medium pt-2">Найти автомобиль</p>
+  <h1 class="text-center text-4xl font-bold py-2">АРЕНДА АВТО В КРЫМУ</h1>
+	<p class="text-center text-3xl font-medium pb-3">Специальные предложения</p>
 
   <!-- Если ошибка -->
   {error ? (
@@ -71,9 +73,7 @@ try {
 
 <style>
   .cars-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
+
   }
 </style>
 
@@ -81,17 +81,22 @@ try {
 	import Siema from "siema";
 
 	document.addEventListener("DOMContentLoaded", () => {
-		const mySiema = new Siema({
-			selector: '.siema-main',
-			duration: 500,
-			easing: "ease-out",
-			perPage: 5,
-			startIndex: 0,
-			draggable: true,
-			multipleDrag: true,
-			threshold: 20,
-			loop: true
-		});
+  const mySiema = new Siema({
+    selector: '.siema-main',
+    duration: 500,
+    easing: "ease-out",
+    perPage: {
+			640: 1,
+      768: 2,
+      1024: 3,
+      1200: 4,
+      1600: 5
+    },
+    startIndex: 0,
+    draggable: true,
+    multipleDrag: true,
+    loop: true
+  });
 
 		// Добавить навигацию
 		document

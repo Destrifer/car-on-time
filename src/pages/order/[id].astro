@@ -8,17 +8,30 @@ let cars = null;
 let selectedCar = null;
 let error = null;
 
+const formatDate = (date) => {
+	const day = String(date.getDate()).padStart(2, "0");
+	const month = String(date.getMonth() + 1).padStart(2, "0"); // Месяцы начинаются с 0
+	const year = date.getFullYear();
+	return `${day}.${month}.${year}`;
+};
+
+// Получаем текущую дату + 3 дня для from-date и + 8 дней для to-date
+const fromDate = new Date();
+fromDate.setDate(fromDate.getDate() + 3);
+const toDate = new Date(fromDate);
+toDate.setDate(toDate.getDate() + 5);
+
 export async function getStaticPaths() {
-	// Выполняем запрос к API для получения списка автомобилей
 	try {
+		// Получаем данные автомобилей
 		const response = await ky
 			.get(
-				"https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=26.10.2024&from-date=19.10.2024&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8",
+				`https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=${formatDate(toDate)}&from-date=${formatDate(fromDate)}&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8`,
 			)
 			.json();
 		const cars = response?.vehicles || [];
 
-		// Возвращаем все возможные пути с id автомобилей
+		// Формируем пути для всех автомобилей
 		return cars.map((car) => ({
 			params: { id: car.id.toString() },
 		}));
@@ -32,7 +45,7 @@ try {
 	// Выполняем запрос к API для получения списка автомобилей
 	const response = await ky
 		.get(
-			"https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=26.10.2024&from-date=19.10.2024&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8",
+			`https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=${formatDate(toDate)}&from-date=${formatDate(fromDate)}&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8`,
 		)
 		.json();
 
