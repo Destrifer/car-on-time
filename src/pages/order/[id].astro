@@ -1,37 +1,26 @@
 ---
 import ky from "ky";
+import Layout from "src/layouts/layout.astro";
 
 // Получаем id автомобиля из URL
 const { id } = Astro.params;
+let title = "Наши контакты";
 
 let cars = null;
 let selectedCar = null;
 let error = null;
 
-const formatDate = (date) => {
-	const day = String(date.getDate()).padStart(2, "0");
-	const month = String(date.getMonth() + 1).padStart(2, "0"); // Месяцы начинаются с 0
-	const year = date.getFullYear();
-	return `${day}.${month}.${year}`;
-};
-
-// Получаем текущую дату + 3 дня для from-date и + 8 дней для to-date
-const fromDate = new Date();
-fromDate.setDate(fromDate.getDate() + 3);
-const toDate = new Date(fromDate);
-toDate.setDate(toDate.getDate() + 5);
-
 export async function getStaticPaths() {
+	// Выполняем запрос к API для получения списка автомобилей
 	try {
-		// Получаем данные автомобилей
 		const response = await ky
 			.get(
-				`https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=${formatDate(toDate)}&from-date=${formatDate(fromDate)}&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8`,
+				"https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=29.10.2024&from-date=24.10.2024&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8",
 			)
 			.json();
 		const cars = response?.vehicles || [];
 
-		// Формируем пути для всех автомобилей
+		// Возвращаем все возможные пути с id автомобилей
 		return cars.map((car) => ({
 			params: { id: car.id.toString() },
 		}));
@@ -45,7 +34,7 @@ try {
 	// Выполняем запрос к API для получения списка автомобилей
 	const response = await ky
 		.get(
-			`https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=${formatDate(toDate)}&from-date=${formatDate(fromDate)}&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8`,
+			"https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=29.10.2024&from-date=24.10.2024&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8",
 		)
 		.json();
 
@@ -54,33 +43,48 @@ try {
 
 	// Находим автомобиль с нужным id
 	selectedCar = cars.find((car) => car.id == id);
+	if (selectedCar) {
+		title = `Прокат ${selectedCar.model}`;
+	}
 } catch (err) {
 	error = err.message;
 }
 ---
 
-<div class="car-order-page">
-	{
-		error ? (
-			<p>Error: {error}</p>
-		) : selectedCar ? (
-			<div>
-				<h1>Order {selectedCar.model}</h1>
-				<img src={selectedCar.images[0].image} alt={selectedCar.model} />
-				<p>Transmission: {selectedCar.transmission}</p>
-				<p>Seats: {selectedCar.seats}</p>
-				<p>
-					Engine: {selectedCar.engine_capacity} L / {selectedCar.engine_hp} HP
-				</p>
-				<p>Deposit: {selectedCar.deposit}</p>
-				<p>Rent Period: {selectedCar.rent_period_days} days</p>
-				<p>Price: {selectedCar.rate_subtotal}</p>
-			</div>
-		) : (
-			<p>Car not found</p>
-		)
-	}
-</div>
+<Layout title={title}>
+	<div class="car-order-page">
+		{
+			error ? (
+				<p>Error: {error}</p>
+			) : selectedCar ? (
+				<div>
+					<div class="siema">
+						<div>
+							<img src={selectedCar.images[0].image} alt="Main car image" />
+						</div>
+						{selectedCar.real_photos && selectedCar.real_photos.length > 0
+							? selectedCar.real_photos.map((photo) => (
+									<div>
+										<img src={photo.replace("_w200", "")} alt="Real photo" />
+									</div>
+								))
+							: ""}
+					</div>
+					<p>Transmission: {selectedCar.transmission}</p>
+					<p>Seats: {selectedCar.seats}</p>
+					<p>
+						Engine: {selectedCar.engine_capacity} L / {selectedCar.engine_hp} HP
+					</p>
+					<p>Deposit: {selectedCar.deposit}</p>
+					<p>Rent Period: {selectedCar.rent_period_days} days</p>
+					<p>Price: {selectedCar.rate_subtotal}</p>
+				</div>
+			) : (
+				<p>Car not found</p>
+			)
+		}
+	</div>
+</Layout>
 
 <style>
 	.car-order-page {
@@ -93,3 +97,28 @@ try {
 		border-radius: 8px;
 	}
 </style>
+
+<script>
+	import Siema from "siema";
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const mySiema = new Siema({
+			selector: ".siema",
+			duration: 500,
+			easing: "ease-out",
+			perPage: 1,
+			startIndex: 0,
+			draggable: true,
+			multipleDrag: true,
+			loop: true,
+		});
+
+		// Добавить навигацию
+		document
+			.querySelector(".prevm")
+			.addEventListener("click", () => mySiema.prev());
+		document
+			.querySelector(".nextm")
+			.addEventListener("click", () => mySiema.next());
+	});
+</script>
