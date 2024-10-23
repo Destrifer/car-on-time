@@ -38,10 +38,14 @@ try {
   ) : (
     <div>
       <!-- Фильтр по классам авто с кнопками -->
-      <div class="filter-section mb-4 flex flex-wrap gap-2">
-        {Array.from({ length: 7 }, (_, i) => (
-          <button class="filter-button" data-id={i + 1}>Класс {i + 1}</button>
-        ))}
+      <div class="filter-section m-4 flex flex-wrap gap-2 justify-center">
+          <button class="filter-button" data-id='1'>Комфорт класс</button>
+					<button class="filter-button" data-id='2'>Бизнес</button>
+					<button class="filter-button" data-id='3'>Промо</button>
+					<button class="filter-button" data-id='4'>Кроссоверы</button>
+					<button class="filter-button" data-id='5'>Люкс</button>
+					<button class="filter-button" data-id='6'>Внедорожники</button>
+					<button class="filter-button" data-id='7'>Минивены</button>
       </div>
 
       <!-- Контейнер для карточек и сообщения -->
@@ -51,10 +55,10 @@ try {
             <CarCard car={car} />
           ))
         ) : (
-          <p>Машин больше нет</p>
+          <p class="mx-4">Машин больше нет</p>
         )}
       </div>
-      <p id="no-cars-message" style="display: none;">Машин выбранного класса нет</p>
+      <p id="no-cars-message" style="display: none;" class="mx-4">Машин выбранного класса нет</p>
     </div>
   )}
 </Layout>
@@ -69,13 +73,13 @@ try {
   .filter-button {
     padding: 10px 15px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #f5f5f5;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.6s;
   }
   .filter-button.active {
-    background-color: #0056b3;
+    background-color: #e60000;
     color: white;
   }
 </style>
