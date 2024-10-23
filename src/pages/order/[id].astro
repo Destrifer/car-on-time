@@ -87,7 +87,8 @@ try {
 			class="inline-block transform rotate-[135deg] border-t-2 border-l-2 border-white w-3 h-3"
 		></span>
 	</button>
-	<table class="w-full">
+	<p class="pb-4 text-2xl font-bold mt-4">Характеристики:</p>
+	<table class="w-full border">
 		<tr>
 			<td>Двигатель</td>
 			<td>{selectedCar.engine_capacity}</td>
@@ -126,10 +127,61 @@ try {
 			)
 		}
 		<div class="max-w-[800px] lg:flex-1">
-			Условия аренды Возраст: Стаж: Залог: Пробег: Необходимые документы Для
-			граждан РФ: Паспорт РФ, действующая прописка, Водительское удостоверение
-			Для иностранных граждан: Заграничный паспорт, Водительское удостоверение
-			международного образца Договор аренды автомобиля
+			<p class="pb-4 text-2xl font-bold">Условия аренды:</p>
+			<table>
+				<tr>
+					<td>Возраст:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Стаж:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Залог:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Пробег:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Необходимые документы Для
+						граждан РФ:</td>
+					<td>Паспорт РФ, действующая прописка, Водительское удостоверение</td>
+				</tr>
+				<tr>
+					<td>Для иностранных граждан:</td>
+					<td>Заграничный паспорт, Водительское удостоверение международного образца Договор аренды автомобиля</td>
+				</tr>
+			</table>
+			<p class="pt-6 text-2xl font-bold">Онлайн заявка:</p>
+			<form
+				class="self-start w-50 flex flex-col sm:flex-row sm:flex-wrap sm:gap-4 gap-4 mt-8"
+			>
+				<input
+					type="text"
+					name="name"
+					required
+					placeholder="Фио:"
+					class="w-full sm:w-[48%] p-2 border text-black"
+				/>
+				<input
+					type="email"
+					name="email"
+					required
+					placeholder="Телефон:"
+					class="w-full sm:w-[48%] p-2 border text-black"
+				/>
+				<textarea
+					name="message"
+					required
+					placeholder="Дополнительная информация:"
+					class="w-full p-2 border text-black h-48"></textarea>
+				<button type="submit" class="w-full bg-red-600 p-2 text-white"
+					>Забронировать</button
+				>
+			</form>
 		</div>
 	</div>
 </Layout>
@@ -143,6 +195,10 @@ try {
 		height: auto;
 		object-fit: cover;
 		border-radius: 8px;
+	}
+	table td {
+		padding: 5px;
+		border: 2px solid black;
 	}
 </style>
 
