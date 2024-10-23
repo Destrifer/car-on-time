@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import logo from "@img/logo.png";
+import { Icon } from "astro-icon/components";
 ---
 
 <header class="bg-white shadow-lg">
@@ -11,7 +12,17 @@ import logo from "@img/logo.png";
 				<Picture src={logo} formats={["avif", "webp"]} alt="Car on time" />
 			</a>
 		</div>
-
+		<div class="flex items-center justify-center">
+			<Icon
+				name="line-md:phone-call-twotone-loop"
+				class="text-gray-600"
+				size="32"
+			/><a
+				href="tel:79789556060"
+				class="text-2xl font-bold drop-shadow-md hidden lg:block"
+				>+7 (978) 955-60-60</a
+			>
+		</div>
 		<!-- Burger Menu -->
 		<div class="sm:hidden relative">
 			<input type="checkbox" id="burgerToggle" class="hidden" />
@@ -32,13 +43,13 @@ import logo from "@img/logo.png";
 			</label>
 
 			<!-- Mobile Menu -->
-			<nav id="mobileMenu" class="absolute right-0 mt-2 hidden z-20 bg-white">
+			<nav id="mobileMenu" class="absolute right-0 mt-2 hidden z-50 bg-white">
 				<a href="/" class="block px-4 py-2">Главная</a>
 				<a href="/rent-terms" class="block px-4 py-2">Условия аренды</a>
 
 				<!-- Dropdown (Always expanded) -->
 				<div>
-					<span class="block px-4 py-2">Парк авто</span>
+					<a href="/park" class="block px-4 py-2">Парк авто</a>
 					<div class="pl-4">
 						<a href="#" class="block px-2 py-2">Комфорт класс</a>
 						<a href="#" class="block px-2 py-2">Бизнес</a>
@@ -61,7 +72,7 @@ import logo from "@img/logo.png";
 
 			<!-- Dropdown -->
 			<div class="relative group">
-				<button>Парк авто</button>
+				<a href="/park" class="block px-4 py-2">Парк авто</a>
 				<div
 					class="absolute hidden bg-white shadow-lg rounded-md group-hover:block z-10"
 				>
