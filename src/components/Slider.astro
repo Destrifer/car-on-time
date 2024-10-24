@@ -14,18 +14,14 @@ import camaro from "@img/camaro.png";
 			<div
 				class="w-full md:w-1/2 flex items-center justify-center text-center flex-col gap-y-4"
 			>
-				<p class="text-4xl font-bold text-white drop-shadow-md">
+				<p class="text-4xl font-black text-white drop-shadow-md">
 					АРЕНДА АВТО В КРЫМУ
 				</p>
-				<p class="text-3xl font-bold text-red-600 drop-shadow-md">
-					+7 (978) 955-60-60
-				</p>
-				<p class="text-3xl font-bold text-red-600 drop-shadow-md">
-					+7 (978) 955-60-60
-				</p>
+				<p class="text-5xl font-black text-red-600">+7 (978) 955-60-60</p>
 				<p class="text-2xl text-white drop-shadow-md">
 					Стойка в терминале аэропорт Симферополь
 				</p>
+				<a href="/park" class="order-button">Наш автопарк</a>
 			</div>
 
 			<!-- Правая часть с изображением, ограниченным по высоте -->
@@ -44,18 +40,14 @@ import camaro from "@img/camaro.png";
 			<div
 				class="w-full md:w-1/2 flex items-center justify-center text-center flex-col gap-y-4"
 			>
-				<p class="text-4xl font-bold text-white drop-shadow-md">
+				<p class="text-4xl font-black text-white drop-shadow-md">
 					АРЕНДА АВТО В КРЫМУ
 				</p>
-				<p class="text-3xl font-bold text-yellow-400 drop-shadow-md">
-					+7 (978) 955-60-60
-				</p>
-				<p class="text-3xl font-bold text-yellow-400 drop-shadow-md">
-					+7 (978) 955-60-60
-				</p>
+				<p class="text-5xl font-black text-yellow-400">+7 (978) 955-60-60</p>
 				<p class="text-2xl text-white drop-shadow-md">
 					Стойка в терминале аэропорт Симферополь
 				</p>
+				<a href="/park" class="order-button two">Наш автопарк</a>
 			</div>
 
 			<div class="w-full md:w-1/2 flex items-center justify-center z-10">
@@ -71,7 +63,7 @@ import camaro from "@img/camaro.png";
 
 	<!-- Кнопки навигации -->
 	<button
-		class="prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center"
+		class="prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-10 h-10 rounded-full flex items-center justify-center"
 	>
 		<!-- Левая стрелочка -->
 		<span
@@ -80,7 +72,7 @@ import camaro from "@img/camaro.png";
 	</button>
 
 	<button
-		class="next absolute right-4 top-1/2 transform -translate-y-1/2 bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center"
+		class="next absolute right-4 top-1/2 transform -translate-y-1/2 bg-black text-white w-10 h-10 rounded-full flex items-center justify-center"
 	>
 		<!-- Правая стрелочка -->
 		<span
@@ -183,6 +175,30 @@ import camaro from "@img/camaro.png";
 		left: -50%;
 		transform: rotate(-20deg);
 		z-index: 1;
+	}
+	.order-button {
+		padding: 10px 20px;
+		color: black;
+		background-color: yellow;
+		text-decoration: none;
+		border-radius: 8px;
+		border: 3px solid black;
+		transition: background-color 0.6s;
+		text-transform: uppercase;
+		font-weight: bolder;
+		margin-top: 5px;
+	}
+	.order-button:hover {
+		background-color: #e60000;
+		color: white;
+	}
+	.two {
+		background-color: #0310d7;
+		color: white;
+	}
+	.two:hover {
+		background-color: yellow;
+		color: black;
 	}
 </style>
 <script>

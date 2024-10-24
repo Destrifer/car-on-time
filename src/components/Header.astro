@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <header class="bg-white shadow-lg">
-	<div class="flex items-center justify-between py-4 px-8">
+	<div class="flex items-center justify-between py-4 px-8 container mx-auto">
 		<!-- Logo -->
 		<div>
 			<a href="/" rel="noopener noreferrer">
@@ -66,13 +66,13 @@ import { Icon } from "astro-icon/components";
 		</div>
 
 		<!-- Main Menu (for larger screens) -->
-		<nav class="hidden sm:flex items-center space-x-6">
+		<nav class="hidden sm:flex items-center space-x-6 uppercase">
 			<a href="/">Главная</a>
 			<a href="/rent-terms">Условия аренды</a>
 
 			<!-- Dropdown -->
 			<div class="relative group">
-				<a href="/park" class="block px-4 py-2">Парк авто</a>
+				<a href="/park" class="block px-4 py-2 font-bold">Парк авто</a>
 				<div
 					class="absolute hidden bg-white shadow-lg rounded-md group-hover:block z-10"
 				>
@@ -103,7 +103,6 @@ import { Icon } from "astro-icon/components";
 		padding: 0.5rem 1rem;
 		text-decoration: none;
 		color: black;
-		font-weight: 500;
 		position: relative;
 		border-top: 2px solid transparent;
 		transition: all 0.3s ease;
