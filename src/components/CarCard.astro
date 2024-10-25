@@ -18,7 +18,7 @@ import { Icon } from "astro-icon/components";
 		От <strong class="font-bold text-xl">{car.rate_per_day} ₽</strong> в сутки
 	</p>
 	<!-- Передаем id автомобиля в URL -->
-	<a href={`/order/${car.id}`} class="order-button">Бронировать</a>
+	<a href={`/order/${car.id}`} class="order-button self-center">Бронировать</a>
 
 	<div
 		class="grid grid-cols-4 gap-4 items-center justify-center p-4 border-t-2 border-black mt-4"
@@ -42,7 +42,9 @@ import { Icon } from "astro-icon/components";
 	.car-card {
 		border: 1px solid #ddd;
 		border-radius: 8px;
-		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 	.car-card img {
 		width: 100%;
