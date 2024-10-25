@@ -13,12 +13,19 @@ import { Icon } from "astro-icon/components";
 		decoding="async"
 		loading="lazy"
 	/>
-	<p class="font-bold text-xl">{car.model}</p>
-	<p>
-		От <strong class="font-bold text-xl">{car.rate_per_day} ₽</strong> в сутки
-	</p>
+	<div class="flex flex-col gap-2 text-xl pb-2">
+		<p class="font-bold text-2xl">{car.model}</p>
+		<p>
+			Депозит: <strong>{car.deposit} ₽</strong>
+		</p>
+		<p>
+			Период аренды: <strong>{car.rent_period_days} дней</strong>
+		</p>
+	</div>
 	<!-- Передаем id автомобиля в URL -->
-	<a href={`/order/${car.id}`} class="order-button self-center">Бронировать</a>
+	<a href={`/order/${car.id}`} class="order-button self-center text-2xl"
+		>От {car.rate_per_day} ₽</a
+	>
 
 	<div
 		class="grid grid-cols-4 gap-4 items-center justify-center p-4 border-t-2 border-black mt-4"
@@ -53,16 +60,18 @@ import { Icon } from "astro-icon/components";
 		border-radius: 4px;
 	}
 	.order-button {
-		display: inline-block;
-		margin-top: 16px;
 		padding: 10px 20px;
-		background-color: #e60000;
-		color: white;
+		color: black;
+		background-color: yellow;
 		text-decoration: none;
 		border-radius: 8px;
+		border: 3px solid black;
 		transition: background-color 0.6s;
+		font-weight: bolder;
+		margin-top: 5px;
 	}
 	.order-button:hover {
-		background-color: #0056b3;
+		background-color: #e60000;
+		color: white;
 	}
 </style>
