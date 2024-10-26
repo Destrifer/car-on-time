@@ -1,13 +1,14 @@
 ---
 import { YouTube } from "astro-embed";
+import Button from "./Button.astro";
 ---
 
-<div class="bg-[#1e2933] py-8">
+<div class="bg-[#1e2933] py-8 mt-8">
 	<div class="flex flex-wrap container mx-auto gap-4">
-		<div class="w-[48%] mx-auto text-white">
-			<p>Аренда авто в крыму CAR-ON-TIME</p>
-			<h2>О компании</h2>
-			<p>
+		<div class="w-[48%] mx-auto text-[#cccccc] flex gap-4 flex-col">
+			<p class="text-2xl font-semibold">Аренда авто в крыму CAR-ON-TIME</p>
+			<h2 class="text-4xl font-black uppercase">О компании</h2>
+			<p class="text-xl">
 				Компания автопрокат CAR-ON-TIME была основана в 2010 году. За время
 				работы в Крыму наша компания имеет положительные отзывы от своих
 				клиентов. Мы можем решать транспортные задачи любой сложности, наши
@@ -18,9 +19,32 @@ import { YouTube } from "astro-embed";
 				<li>Аренда авто от эконом до V.I.P. класса</li>
 				<li>Аренда автомобилей без водителя, так и с водителем</li>
 			</ul>
+			<div class="">
+				<Button
+					title="Условия аренды"
+					url="/rent-terms"
+					styleClass="self-start"
+				/>
+				<Button title="Наш автопарк" url="/park" styleClass="self-start" />
+			</div>
 		</div>
 		<div class="w-[48%] mx-auto">
 			<YouTube id="0I6_05Rcpdo" title="Автопрокат Car-On-Time" />
 		</div>
 	</div>
 </div>
+<style>
+	ul li {
+		position: relative;
+		padding-left: 20px; /* Отступ для иконки */
+		list-style: none; /* Убираем стандартные маркеры */
+	}
+
+	ul li::before {
+		content: "✔"; /* Галочка */
+		position: absolute;
+		left: -5px;
+		color: green; /* Цвет галочки */
+		font-size: 1.2em; /* Размер галочки */
+	}
+</style>
