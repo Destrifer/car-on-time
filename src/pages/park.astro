@@ -39,20 +39,20 @@ try {
     <div>
       <!-- Фильтр по классам авто с кнопками -->
       <div class="filter-section m-4 flex flex-wrap gap-2 justify-center">
-          <button class="filter-button" data-id='1'>Комфорт класс</button>
-					<button class="filter-button" data-id='2'>Бизнес</button>
-					<button class="filter-button" data-id='3'>Промо</button>
-					<button class="filter-button" data-id='4'>Кроссоверы</button>
-					<button class="filter-button" data-id='5'>Люкс</button>
-					<button class="filter-button" data-id='6'>Внедорожники</button>
-					<button class="filter-button" data-id='7'>Минивены</button>
+        <button class="filter-button" data-id='1'>Комфорт класс</button>
+        <button class="filter-button" data-id='2'>Бизнес</button>
+        <button class="filter-button" data-id='3'>Промо</button>
+        <button class="filter-button" data-id='4'>Кроссоверы</button>
+        <button class="filter-button" data-id='5'>Люкс</button>
+        <button class="filter-button" data-id='6'>Внедорожники</button>
+        <button class="filter-button" data-id='7'>Минивены</button>
       </div>
 
       <!-- Контейнер для карточек и сообщения -->
       <div class="cars-grid p-4" id="cars-container">
         {cars.length > 0 ? (
           cars.map(car => (
-            <CarCard car={car} />
+            <CarCard car={car} data-id={car.class_id} /> // Предполагается, что у машины есть поле class_id для идентификации класса
           ))
         ) : (
           <p class="mx-4">Машин больше нет</p>
@@ -84,7 +84,7 @@ try {
   }
 </style>
 
-<!-- Добавляем скрипт для фильтрации -->
+<!-- Добавляем скрипт для фильтрации и обработки URL параметров -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const filterButtons = document.querySelectorAll('.filter-button');
@@ -93,6 +93,40 @@ try {
     const noCarsMessage = document.getElementById('no-cars-message');
     let selectedClasses = [];
 
+    // Функция для фильтрации карточек
+    function filterCars() {
+      let visibleCars = 0;
+      cars.forEach(car => {
+        const carClassId = car.getAttribute('data-id');
+
+        if (selectedClasses.length === 0 || selectedClasses.includes(carClassId)) {
+          car.style.display = 'block';
+          visibleCars++;
+        } else {
+          car.style.display = 'none';
+        }
+      });
+
+      // Показываем/скрываем сообщение
+      noCarsMessage.style.display = visibleCars === 0 ? 'block' : 'none';
+    }
+
+    // Считываем параметр class из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialClass = urlParams.get('class');
+
+    // Если есть параметр class, активируем соответствующую кнопку и фильтруем
+    if (initialClass) {
+      selectedClasses.push(initialClass);
+      filterButtons.forEach(button => {
+        if (button.getAttribute('data-id') === initialClass) {
+          button.classList.add('active');
+        }
+      });
+      filterCars();
+    }
+
+    // Добавляем обработчик клика для кнопок фильтров
     filterButtons.forEach(button => {
       button.addEventListener('click', function () {
         const classId = this.getAttribute('data-id');
@@ -106,25 +140,7 @@ try {
           this.classList.add('active');
         }
 
-        // Фильтрация карточек
-        let visibleCars = 0;
-        cars.forEach(car => {
-          const carClassId = car.getAttribute('data-id');
-
-          if (selectedClasses.length === 0 || selectedClasses.includes(carClassId)) {
-            car.style.display = 'block';
-            visibleCars++;
-          } else {
-            car.style.display = 'none';
-          }
-        });
-
-        // Показываем/скрываем сообщение
-        if (visibleCars === 0) {
-          noCarsMessage.style.display = 'block';
-        } else {
-          noCarsMessage.style.display = 'none';
-        }
+        filterCars();
       });
     });
   });
