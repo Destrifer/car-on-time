@@ -1,0 +1,26 @@
+---
+const { title, url, target = "_self", styleClass = "" } = Astro.props;
+---
+
+<a href={url} class:list={["order-button", styleClass]} target={target}
+	>{title}</a
+>
+
+<style>
+	.order-button {
+		padding: 10px 20px;
+		color: black;
+		background-color: yellow;
+		text-decoration: none;
+		border-radius: 8px;
+		border: 3px solid black;
+		transition: background-color 0.6s;
+		text-transform: uppercase;
+		font-weight: bold;
+		margin-top: 5px;
+	}
+	.order-button:hover {
+		background-color: #e60000;
+		color: white;
+	}
+</style>

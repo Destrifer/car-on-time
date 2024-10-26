@@ -1,5 +1,6 @@
 ---
 import { Picture } from "astro:assets";
+import Button from "./Button.astro";
 import bmw from "@img/bmw.png";
 import camaro from "@img/camaro.png";
 ---
@@ -21,7 +22,7 @@ import camaro from "@img/camaro.png";
 				<p class="text-2xl text-white drop-shadow-md">
 					Стойка в терминале аэропорт Симферополь
 				</p>
-				<a href="/park" class="order-button">Наш автопарк</a>
+				<Button title="Наш автопарк" url="/park" />
 			</div>
 
 			<!-- Правая часть с изображением, ограниченным по высоте -->
@@ -47,7 +48,7 @@ import camaro from "@img/camaro.png";
 				<p class="text-2xl text-white drop-shadow-md">
 					Стойка в терминале аэропорт Симферополь
 				</p>
-				<a href="/park" class="order-button two">Наш автопарк</a>
+				<Button title="Наш автопарк" url="/park" styleClass="two" />
 			</div>
 
 			<div class="w-full md:w-1/2 flex items-center justify-center z-10">
@@ -176,29 +177,13 @@ import camaro from "@img/camaro.png";
 		transform: rotate(-20deg);
 		z-index: 1;
 	}
-	.order-button {
-		padding: 10px 20px;
-		color: black;
-		background-color: yellow;
-		text-decoration: none;
-		border-radius: 8px;
-		border: 3px solid black;
-		transition: background-color 0.6s;
-		text-transform: uppercase;
-		font-weight: bolder;
-		margin-top: 5px;
+	:global(.two) {
+		background-color: #0310d7 !important;
+		color: white !important;
 	}
-	.order-button:hover {
-		background-color: #e60000;
-		color: white;
-	}
-	.two {
-		background-color: #0310d7;
-		color: white;
-	}
-	.two:hover {
-		background-color: yellow;
-		color: black;
+	:global(.two:hover) {
+		background-color: yellow !important;
+		color: black !important;
 	}
 </style>
 <script>

@@ -2,6 +2,7 @@
 const { car } = Astro.props;
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
 ---
 
 <div class="car-card text-center mx-2" data-id={car.class_id}>
@@ -22,9 +23,11 @@ import { Icon } from "astro-icon/components";
 			Период аренды: <strong>{car.rent_period_days} дней</strong>
 		</p>
 	</div>
-	<a href={`/order/${car.id}`} class="order-button self-center text-2xl">
-		От {car.rate_per_day} ₽
-	</a>
+	<Button
+		title={`От ${car.rate_per_day} ₽`}
+		url={`/order/${car.id}`}
+		styleClass="order-button self-center text-2xl"
+	/>
 
 	<div
 		class="grid grid-cols-5 gap-4 items-center justify-center p-4 border-t-2 border-black mt-4"
@@ -62,27 +65,11 @@ import { Icon } from "astro-icon/components";
 		object-fit: cover;
 		border-radius: 4px;
 	}
-	.order-button {
-		padding: 10px 20px;
-		color: black;
-		background-color: yellow;
-		text-decoration: none;
-		border-radius: 8px;
-		border: 3px solid black;
-		transition: background-color 0.6s;
-		font-weight: bolder;
-		margin-top: 5px;
-	}
-	.order-button:hover {
-		background-color: #e60000;
-		color: white;
-	}
 	.color-indicator {
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
 		border: 1px solid #333;
-		/* Выровнять по центру и добавить немного отступа, чтобы сохранить симметрию */
 		display: inline-block;
 		margin-left: 4px;
 	}
@@ -116,7 +103,6 @@ import { Icon } from "astro-icon/components";
 	.color-indicator[title="ТемноСерый"] {
 		background-color: #2f4f4f;
 	}
-	/* Цвет по умолчанию */
 	.color-indicator:not([title]) {
 		background-color: white;
 		border-color: #ddd;

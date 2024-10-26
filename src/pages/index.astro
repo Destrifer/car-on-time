@@ -3,6 +3,7 @@ import Layout from "../layouts/layout.astro";
 import Slider from "@components/Slider.astro";
 import MainCars from "@components/MainCars.astro";
 import Form from "@components/Form.astro";
+import About from "@components/About.astro";
 const showTitle = false;
 const title = "Главная";
 ---
@@ -10,6 +11,7 @@ const title = "Главная";
 <Layout title={title} showTitle={showTitle}>
 	<Slider />
 	<MainCars />
+	<About />
 	<Form />
 </Layout>
 
