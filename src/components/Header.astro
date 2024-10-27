@@ -4,7 +4,7 @@ import logo from "@img/logo.png";
 import { Icon } from "astro-icon/components";
 ---
 
-<header class="bg-white shadow-lg">
+<header class="bg-white shadow-lg z-10">
 	<div class="flex items-center justify-between py-4 px-8 container mx-auto">
 		<!-- Logo -->
 		<div>
@@ -95,7 +95,16 @@ import { Icon } from "astro-icon/components";
 	#burgerToggle:checked ~ nav {
 		display: block;
 	}
-
+	header {
+		position: sticky;
+		top: 0;
+	}
+	header > div {
+		transition: padding 0.3s ease;
+	}
+	.scrolled {
+		padding: 5px;
+	}
 	/* Основной стиль меню */
 	nav a,
 	nav button {
@@ -138,3 +147,12 @@ import { Icon } from "astro-icon/components";
 		}
 	}
 </style>
+<script>
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 92) {
+			document.querySelector("header > div").classList.add("scrolled");
+		} else {
+			document.querySelector("header > div").classList.remove("scrolled");
+		}
+	});
+</script>
