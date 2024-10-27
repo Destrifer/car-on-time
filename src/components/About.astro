@@ -5,9 +5,9 @@ import Button from "./Button.astro";
 
 <div class="bg-[#1e2933] py-8 mt-8">
 	<div class="flex flex-wrap container mx-auto gap-4">
-		<div class="w-[48%] mx-auto text-[#cccccc] flex gap-4 flex-col">
+		<div class="w-[48%] mx-auto text-[#ccc] flex gap-4 flex-col">
 			<p class="text-2xl font-semibold">Аренда авто в крыму CAR-ON-TIME</p>
-			<h2 class="text-4xl font-black uppercase">О компании</h2>
+			<h2 class="text-4xl font-black uppercase text-white">О компании</h2>
 			<p class="text-xl">
 				Компания автопрокат CAR-ON-TIME была основана в 2010 году. За время
 				работы в Крыму наша компания имеет положительные отзывы от своих
@@ -20,12 +20,8 @@ import Button from "./Button.astro";
 				<li>Аренда автомобилей без водителя, так и с водителем</li>
 			</ul>
 			<div class="">
-				<Button
-					title="Условия аренды"
-					url="/rent-terms"
-					styleClass="self-start"
-				/>
-				<Button title="Наш автопарк" url="/park" styleClass="self-start" />
+				<Button title="Условия аренды" url="/rent-terms" styleClass="wt" />
+				<Button title="Наш автопарк" url="/park" styleClass="wt" />
 			</div>
 		</div>
 		<div class="w-[48%] mx-auto">
@@ -46,5 +42,8 @@ import Button from "./Button.astro";
 		left: -5px;
 		color: green; /* Цвет галочки */
 		font-size: 1.2em; /* Размер галочки */
+	}
+	:global(.wt) {
+		border: 3px solid green !important;
 	}
 </style>
