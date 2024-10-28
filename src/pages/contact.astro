@@ -5,71 +5,94 @@ const title = "Наши контакты";
 ---
 
 <Layout title={title}>
-	<div class="flex justify-between items-center px-40 py-8 gap-5">
-		<ul class="self-start space-y-2">
-			<li class="flex">
-				<div class="w-12 h-12 flex items-center justify-center">
-					<Icon
-						name="openmoji:european-name-badge"
-						class="text-gray-600"
-						size="24"
-					/>
-				</div>
-				<div class="ml-2">
-					<p class="font-bold text-lg">Наименование юридического лица:</p> ООО «КАНСАЙ-ГРУПП»
-					ИНН: 9102225144
-				</div>
-			</li>
-			<li class="flex">
-				<div class="w-12 h-12 flex items-center justify-center">
-					<Icon
-						name="openmoji:home-button"
-						class="inline-block mr-1"
-						size="28"
-					/>
-				</div>
-				<div class="ml-2">
-					<p class="font-bold text-lg">Адрес:</p> 297536, Республика Крым, Симферопольский
-					р-н, с.Укромное, Ул.Молодежная, 64-б/
-				</div>
-			</li>
-			<li class="flex">
-				<div class="w-12 h-12 flex items-center justify-center">
-					<Icon name="openmoji:mobile-phone" class="inline-block" size="32" />
-				</div><div class="ml-2">
-					<p class="font-bold text-lg">Телефон:</p> +7 978 955 60 60 +7 978 913 44
-					13
-				</div>
-			</li>
-			<li class="flex">
-				<div class="w-12 h-12 flex items-center justify-center">
-					<Icon
-						name="logos:whatsapp-icon"
-						class="inline-block mr-2 mb-1 ml-1"
-						size="20"
-					/>
-				</div><div class="ml-2">
-					<p class="font-bold text-lg">Whatsapp:</p> +7 978 955 60 60
-				</div>
-			</li>
-			<li class="flex">
-				<div class="w-12 h-12 flex items-center justify-center">
-					<Icon name="openmoji:e-mail" class="inline-block" size="32" />
-				</div>
-				<div class="ml-2">
-					<p class="font-bold text-lg">Email:</p> info@car-on-time.ru
-				</div>
-			</li>
-			<li class="flex">
-				<div class="w-12 h-12 flex items-center justify-center">
-					<Icon name="openmoji:timer-clock" class="inline-block" size="32" />
-				</div>
-				<div class="ml-2">
-					<p class="font-bold text-lg">Режим работы:</p> Мы работаем ежедневно с
-					08:00 до 20:00
-				</div>
-			</li>
-		</ul>
+	<div class="flex justify-between items-center py-8 gap-5 container mx-auto">
+		<div class="">
+			<ul class="self-start space-y-2">
+				<li class="flex">
+					<div
+						class="w-12 h-12 flex items-center justify-center rounded-full bg-[#3c5b9b]"
+					>
+						<Icon
+							name="material-symbols:id-card"
+							class="inline-block text-white"
+							size="28"
+						/>
+					</div>
+					<div class="ml-4">
+						<p class="font-bold text-lg">Наименование юридического лица:</p> ООО
+						«КАНСАЙ-ГРУПП» ИНН: 9102225144
+					</div>
+				</li>
+				<li class="flex">
+					<div
+						class="w-12 h-12 flex items-center justify-center rounded-full bg-[#3c5b9b]"
+					>
+						<Icon
+							name="material-symbols:house"
+							class="inline-block text-white"
+							size="28"
+						/>
+					</div>
+					<div class="ml-4">
+						<p class="font-bold text-lg">Адрес:</p> 297536, Республика Крым, Симферопольский
+						р-н, с.Укромное, Ул.Молодежная, 64-б/
+					</div>
+				</li>
+				<li class="flex">
+					<div
+						class="w-12 h-12 flex items-center justify-center rounded-full bg-[#3c5b9b]"
+					>
+						<Icon name="mdi:phone" class="inline-block text-white" size="24" />
+					</div><div class="ml-4">
+						<p class="font-bold text-lg">Телефон:</p> +7 978 955 60 60 +7 978 913
+						44 13
+					</div>
+				</li>
+				<li class="flex">
+					<div
+						class="w-12 h-12 flex items-center justify-center rounded-full bg-[#3c5b9b]"
+					>
+						<Icon
+							name="mingcute:whatsapp-fill"
+							class="inline-block text-white"
+							size="24"
+						/>
+					</div><div class="ml-4">
+						<p class="font-bold text-lg">Whatsapp:</p> +7 978 955 60 60
+					</div>
+				</li>
+				<li class="flex">
+					<div
+						class="w-12 h-12 flex items-center justify-center rounded-full bg-[#3c5b9b]"
+					>
+						<Icon
+							name="material-symbols:mail"
+							class="inline-block text-white"
+							size="24"
+						/>
+					</div>
+					<div class="ml-4">
+						<p class="font-bold text-lg">Email:</p> info@car-on-time.ru
+					</div>
+				</li>
+				<li class="flex">
+					<div
+						class="w-12 h-12 flex items-center justify-center rounded-full bg-[#3c5b9b]"
+					>
+						<Icon name="mdi:clock" class="inline-block text-white" size="24" />
+					</div>
+					<div class="ml-4">
+						<p class="font-bold text-lg">Режим работы:</p> Мы работаем ежедневно
+						с 08:00 до 20:00
+					</div>
+				</li>
+			</ul>
+			<p class="pt-4">
+				<strong class="block pb-4">Заявки принимаются круглосуточно.</strong> Мы
+				можем подать Вам автомобиль в любом уголке крымского полуострова!
+			</p>
+		</div>
+
 		<div>
 			<p class="pb-4 text-3xl text-center font-bold">Обратная связь</p>
 			<form
@@ -94,7 +117,7 @@ const title = "Наши контакты";
 					required
 					placeholder="Сообщение:"
 					class="w-full p-2 border text-black h-48"></textarea>
-				<button type="submit" class="w-full bg-red-600 p-2 text-white"
+				<button type="submit" class="w-full bg-red-600 p-2 text-white w-auto"
 					>Отправить</button
 				>
 			</form>
