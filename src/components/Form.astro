@@ -34,31 +34,35 @@ const handleSubmit = async (event) => {
 	class="relative p-8 bg-cover bg-bottom before:absolute before:inset-0 before:bg-black before:bg-opacity-70 before:content-['']"
 	style="background-image: url('/feedback.jpg');"
 >
-	<div class="conteiner text-white relative z-10 flex gap-8 flex-col">
+	<div
+		class="container mx-auto text-white relative z-10 flex gap-8 flex-col flex-wrap"
+	>
 		<div class="text-center">
 			Задайте вопрос онлайн
 			<p class="text-4xl font-black">Обратная связь</p>
 		</div>
 
-		<div class="flex gap-x-8 justify-center flex-wrap">
+		<div class="flex gap-4 justify-center flex-wrap">
 			<form
 				onsubmit={handleSubmit}
-				class="self-start w-full sm:w-1/4 flex flex-col sm:flex-row sm:flex-wrap sm:gap-4 gap-4"
+				class="self-start w-full md:w-[48%] flex flex-wrap gap-4"
 			>
-				<input
-					type="text"
-					name="name"
-					required
-					placeholder="Имя:"
-					class="w-full sm:w-[48%] p-2 border text-black"
-				/>
-				<input
-					type="email"
-					name="email"
-					required
-					placeholder="Email:"
-					class="w-full sm:w-[48%] p-2 border text-black"
-				/>
+				<div class="flex w-full lg:flex-row flex-col gap-4">
+					<input
+						type="text"
+						name="name"
+						required
+						placeholder="Имя:"
+						class="flex-1 p-2 border text-black"
+					/>
+					<input
+						type="email"
+						name="email"
+						required
+						placeholder="Email:"
+						class="flex-1 p-2 border text-black"
+					/>
+				</div>
 				<textarea
 					name="message"
 					required
@@ -67,7 +71,7 @@ const handleSubmit = async (event) => {
 				<button type="submit" class="w-full bg-red-600 p-2">Отправить</button>
 			</form>
 
-			<div class="text-white sm:w-1/4 w-full">
+			<div class="text-white md:w-[48%] w-full">
 				Мы работаем для Вас ежедневно c 08:00 до 20:00.<br />
 				Прием и выдача автомобилей в нерабочее время - 1500 руб.<br />
 				Стойка аренды авто в терминале аэропорт Симферополь

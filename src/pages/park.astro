@@ -41,7 +41,7 @@ try {
       <div class="filter-section m-4 flex flex-wrap gap-2 justify-center">
         <button class="tab-button" data-id='1'>Комфорт класс</button>
         <button class="tab-button" data-id='2'>Бизнес</button>
-        <button class="tab-button" data-id='3'>Промо</button>
+        <!-- Убрана кнопка с data-id="3" -->
         <button class="tab-button" data-id='4'>Кроссоверы</button>
         <button class="tab-button" data-id='5'>Люкс</button>
         <button class="tab-button" data-id='6'>Внедорожники</button>
@@ -51,9 +51,12 @@ try {
       <!-- Контейнер для карточек и сообщения -->
       <div class="cars-grid p-4" id="cars-container">
         {cars.length > 0 ? (
-          cars.map(car => (
-            <CarCard car={car} data-id={car.class_id} /> // Предполагается, что у машины есть поле class_id для идентификации класса
-          ))
+          // Фильтруем автомобили, исключая те, у которых class_id равен 3
+          cars
+            .filter(car => car.class_id !== 3)
+            .map(car => (
+              <CarCard car={car} data-id={car.class_id} />
+            ))
         ) : (
           <p class="mx-4">Машин больше нет</p>
         )}
@@ -62,6 +65,7 @@ try {
     </div>
   )}
 </Layout>
+
 
 <!-- Добавляем стили -->
 <style>
@@ -109,7 +113,7 @@ try {
         const carClassId = car.getAttribute('data-id');
 
         if (selectedClasses.length === 0 || selectedClasses.includes(carClassId)) {
-          car.style.display = 'block';
+          car.style.display = 'flex';
           visibleCars++;
         } else {
           car.style.display = 'none';
