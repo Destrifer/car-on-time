@@ -23,7 +23,7 @@ let error = null;
 
 try {
   // Выполняем запрос к API
-  const response = await ky.get(`https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=${formatDate(toDate)}&from-date=${formatDate(fromDate)}&from-time=12%3A00&to-time=12%3A00&promocode=null&page=1&per_page=8`).json();
+  const response = await ky.get(`https://new.mycarrental.ru/api/v2/search_cars?from-id=10&to-id=10&to-date=${formatDate(toDate)}&from-date=${formatDate(fromDate)}&from-time=12%3A00&to-time=12%3A00&promocode=null&per_page=100`).json();
   
   // Ожидаем массив автомобилей в поле vehicles
   cars = response?.vehicles || [];
@@ -36,16 +36,16 @@ try {
   {error ? (
     <div>Error: {error}</div>
   ) : (
-    <div>
+    <div class="container mx-auto">
       <!-- Фильтр по классам авто с кнопками -->
       <div class="filter-section m-4 flex flex-wrap gap-2 justify-center">
-        <button class="filter-button" data-id='1'>Комфорт класс</button>
-        <button class="filter-button" data-id='2'>Бизнес</button>
-        <button class="filter-button" data-id='3'>Промо</button>
-        <button class="filter-button" data-id='4'>Кроссоверы</button>
-        <button class="filter-button" data-id='5'>Люкс</button>
-        <button class="filter-button" data-id='6'>Внедорожники</button>
-        <button class="filter-button" data-id='7'>Минивены</button>
+        <button class="tab-button" data-id='1'>Комфорт класс</button>
+        <button class="tab-button" data-id='2'>Бизнес</button>
+        <button class="tab-button" data-id='3'>Промо</button>
+        <button class="tab-button" data-id='4'>Кроссоверы</button>
+        <button class="tab-button" data-id='5'>Люкс</button>
+        <button class="tab-button" data-id='6'>Внедорожники</button>
+        <button class="tab-button" data-id='7'>Минивены</button>
       </div>
 
       <!-- Контейнер для карточек и сообщения -->
@@ -67,18 +67,27 @@ try {
 <style>
   .cars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
   }
-  .filter-button {
-    padding: 10px 15px;
-    border: 1px solid #ccc;
+  .tab-button {
+    padding: 10px 20px;
+    color: black;
+    background-color: yellow;
+    text-decoration: none;
     border-radius: 8px;
-    background-color: #f5f5f5;
-    cursor: pointer;
+    border: 3px solid black;
     transition: background-color 0.6s;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-top: 5px;
   }
-  .filter-button.active {
+  .tab-button:hover {
+    background-color: #e60000;
+    color: white;
+  }
+  /* Стили для активного таба */
+  .tab-button.active {
     background-color: #e60000;
     color: white;
   }
@@ -87,7 +96,7 @@ try {
 <!-- Добавляем скрипт для фильтрации и обработки URL параметров -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const filterButtons = document.querySelectorAll('.filter-button');
+    const filterButtons = document.querySelectorAll('.tab-button');
     const carsContainer = document.getElementById('cars-container');
     const cars = Array.from(carsContainer.children);
     const noCarsMessage = document.getElementById('no-cars-message');
