@@ -51,7 +51,6 @@ try {
       <!-- Контейнер для карточек и сообщения -->
       <div class="cars-grid p-4" id="cars-container">
         {cars.length > 0 ? (
-          // Фильтруем автомобили, исключая те, у которых class_id равен 3
           cars
             .filter(car => car.class_id !== 3)
             .map(car => (
